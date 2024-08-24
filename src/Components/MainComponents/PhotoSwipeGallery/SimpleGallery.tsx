@@ -49,7 +49,7 @@ export default function SimpleGallery({
           target="_blank"
           rel="noreferrer"
         >
-          <img
+          <Image
             className="h-full w-full object-cover object-center sm:rounded-lg"
             src={image.thumbnailURL}
             alt=""

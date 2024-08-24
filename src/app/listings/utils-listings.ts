@@ -46,7 +46,7 @@ export const validCountries: string[] = [
 ];
 
 export function transformImageUrl(url: string): string {
-  const transformationString = "q_auto,f_auto,w_500"; // Example transformations
+  const transformationString = "q_auto,f_auto,w_500";
   const parts = url.split("/upload/");
   return `${parts[0]}/upload/${transformationString}/${parts[1]}`;
 }

@@ -28,6 +28,7 @@ export default function ClientBlogPost({
               src="https://res.cloudinary.com/dfb584zgd/image/upload/v1722859196/speed%20build%20marketplace/about-us-speed-build-marketplace.webp"
               alt="alt text"
               width={500}
+              height={500}
             />
             <figcaption className="mt-4 flex gap-x-2 text-sm leading-6 text-gray-500">
               <InformationCircleIcon

@@ -330,14 +330,18 @@ export default function UserInfoClientSideComponent({
                       onChange={handleImageChange}
                     />
                     {newImage ? (
-                      <img
+                      <Image
                         src={URL.createObjectURL(newImage)}
                         alt={formData.firstName || "Profile Image"}
+                        width={48}
+                        height={48}
                         className="h-12 w-12 rounded-full"
                       />
                     ) : imageURL ? (
-                      <img
+                      <Image
                         src={imageURL}
+                        width={48}
+                        height={48}
                         alt={formData.firstName || "Profile Image"}
                         className="h-12 w-12 rounded-full"
                       />
