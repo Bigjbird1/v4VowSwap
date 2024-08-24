@@ -1,0 +1,32 @@
+/* Sold flag style */
+.soldflag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red;
+  color: white;
+  padding: 4px 8px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 0 0 0 8px;
+  z-index: 1; /* Ensures the flag is above other content */
+}
+
+/* Aspect ratio for larger screens */
+.aspect-3-2 {
+  aspect-ratio: 3 / 2;
+}
+
+/* Aspect ratio for larger screens - media query */
+@media (min-width: 768px) {
+  .aspect-3-2 {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* Seller profile image */
+.img-seller-profile {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}

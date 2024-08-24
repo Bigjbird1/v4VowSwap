@@ -1,0 +1,13 @@
+@media (max-width: 640px) {
+  .fixedBottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    padding: 10px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  }
+}
