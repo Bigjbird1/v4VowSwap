@@ -67,8 +67,10 @@ export default function SpecificListing({ listingData }: SpecificListingProps) {
                         onClick={() => setSelectedImage(image.url)}
                         className="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
                       >
-                        <img
+                        <Image
                           src={image.url}
+                          width={500}
+                          height={500}
                           alt={`Thumbnail ${index}`}
                           className="h-full w-full object-cover rounded-md object-center"
                         />
@@ -84,9 +86,11 @@ export default function SpecificListing({ listingData }: SpecificListingProps) {
                       data-pswp-width="1600"
                       data-pswp-height="1600"
                     >
-                      <img
+                      <Image
                         src={selectedImage}
                         alt="Selected Product"
+                        width={500}
+                        height={500}
                         className="h-full w-full object-cover object-center sm:rounded-lg cursor-pointer"
                       />
                     </a>
@@ -155,9 +159,11 @@ export default function SpecificListing({ listingData }: SpecificListingProps) {
                   </button>
                 </div>
                 <div className="mt-10 flex items-center">
-                  <img
+                  <Image
                     src={seller.imageUrl || "/images/profiles/profile1.jpg"}
                     alt="Seller"
+                    width={40}
+                    height={40}
                     className="w-10 h-10 rounded-full object-cover mr-4"
                   />
                   <div>

@@ -32,7 +32,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
           {thumbnails.length > 0 ? (
             thumbnails.map((thumbnail, index) => (
               <div key={index} className="relative">
-                <img
+                <Image
                   src={thumbnail}
                   alt={`Uploaded preview ${index + 1}`}
                   className="h-12 w-12 rounded"
