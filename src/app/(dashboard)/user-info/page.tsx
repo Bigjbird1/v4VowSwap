@@ -20,17 +20,12 @@ interface UserData {
 }
 
 const fetchData = async (): Promise<UserData | null> => {
-  const { getToken } = auth();
-  const token = await getToken();
-
-  if (!token) {
-    return null;
-  }
+  const { userId, redirectToSignIn } = await auth();
+  if (!userId) return redirectToSignIn();
 
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/get-user-data`,
     {
-      headers: { Authorization: `Bearer ${token}` },
       cache: "no-cache",
     }
   );

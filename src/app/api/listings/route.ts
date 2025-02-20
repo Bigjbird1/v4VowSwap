@@ -37,3 +37,34 @@ export async function GET(request: NextRequest) {
 //     );
 //   }
 // }
+
+// Dynamic Database Selection (Supports MongoDB & Supabase)
+// This version dynamically selects the database based on the DATABASE_TYPE setting in the .env file.
+// If DATABASE_TYPE is "supabase", it fetches listings from Supabase; otherwise, it defaults to MongoDB.
+// --------------------------------------------
+// import { NextResponse } from "next/server";
+// import config from "../../../../config";
+// import { getAllSupabaseListings } from "../../../../models/supabaseListing";
+// import connectMongo from "../../../../libs/connectMongo";
+// import Listing from "../../../../models/listing";
+
+// export async function GET(request: NextRequest) {
+//   try {
+//     if (config.databaseType === "supabase") {
+//       // Fetch all listings from Supabase
+//       const listings = await getAllSupabaseListings();
+//       return NextResponse.json(listings, { status: 200 });
+//     } else {
+//       // Connect to MongoDB and fetch listings
+//       await connectMongo();
+//       const listings = await Listing.find();
+//       return NextResponse.json(listings, { status: 200 });
+//     }
+//   } catch (error) {
+//     console.error("Error fetching listings:", error);
+//     return NextResponse.json(
+//       { error: "Internal Server Error" },
+//       { status: 500 }
+//     );
+//   }
+// }

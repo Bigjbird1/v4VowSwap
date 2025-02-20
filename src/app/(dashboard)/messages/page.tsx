@@ -2,7 +2,8 @@ import "server-only";
 import FetchMessagesClientSideComponent from "./fetchMessagesClientSideComponent";
 import { Suspense } from "react";
 import { redirect } from "next/navigation";
-import { auth } from "@clerk/nextjs/server";
+
+export const dynamic = "force-dynamic";
 
 interface Message {
   messageThreadId: string;
@@ -14,20 +15,14 @@ interface Message {
 }
 
 const fetchMessages = async (): Promise<Message[] | null> => {
-  const { getToken } = auth();
-  const token = await getToken();
-
-  if (!token) {
-    return null;
-  }
-
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/get-all-messages`,
-    {
-      headers: { Authorization: `Bearer ${token}` },
-      cache: "no-cache",
-    }
+    { cache: "no-cache" }
   );
+
+  if (response.status === 401) {
+    return null;
+  }
 
   if (!response.ok) {
     return null;

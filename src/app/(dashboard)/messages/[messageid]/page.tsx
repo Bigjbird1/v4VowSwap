@@ -1,6 +1,5 @@
 import "server-only";
 import SpecificMessageThreadClientSide from "./specificMessageThreadClientSide";
-import { auth } from "@clerk/nextjs/server";
 import { Suspense } from "react";
 import { redirect } from "next/navigation";
 
@@ -28,26 +27,17 @@ interface ListingDetails {
 const fetchSpecificMessages = async (
   messageid: string
 ): Promise<{ messages: Message[]; listingDetails: ListingDetails | null }> => {
-  const { getToken } = auth();
-
   try {
-    const token = await getToken();
-
-    if (!token) {
-      redirect("/sign-in");
-      return { messages: [], listingDetails: null };
-    }
-
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/get-specific-message/${messageid}`,
       {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-          "Cache-Control": "no-cache",
-        },
+        cache: "no-cache",
       }
     );
+
+    if (response.status === 401) {
+      return { messages: [], listingDetails: null };
+    }
 
     if (!response.ok) {
       throw new Error("Network response was not ok");
@@ -76,6 +66,11 @@ interface Params {
 export default async function SpecificMessageServerSide({ params }: Params) {
   const { messageid } = params;
   const { messages, listingDetails } = await fetchSpecificMessages(messageid);
+
+  if (messages.length === 0) {
+    redirect("/sign-in");
+    return null;
+  }
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
