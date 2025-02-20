@@ -16,6 +16,7 @@ interface Config {
   appDescription: string;
   domainName: string;
   sendGrid: SendGridConfig;
+  databaseType: "mongodb" | "supabase";
 }
 
 const config: Config = {
@@ -45,6 +46,9 @@ const config: Config = {
     // When someone replies to supportEmail sent by the app, forward it to this email. If supportEmail is empty, this will be ignored.
     forwardRepliesTo: "peter.parker@gmail.com",
   },
+  // NEW: Add database type configuration
+  databaseType:
+    (process.env.DATABASE_TYPE as "mongodb" | "supabase") || "mongodb",
 };
 
 export default config;

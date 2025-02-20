@@ -1,7 +1,6 @@
 import AllMyListingsClientSideComponent from "./allMyListingsClientSideComponent";
 import { Suspense } from "react";
 import { redirect } from "next/navigation";
-import { auth } from "@clerk/nextjs/server";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -16,17 +15,10 @@ interface Listing {
 }
 
 const fetchMyListingsData = async (): Promise<Listing[] | null> => {
-  const { getToken } = auth();
-  const token = await getToken();
-
-  if (!token) {
-    return null;
-  }
-
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/my-listings`,
     {
-      headers: { Authorization: `Bearer ${token}` },
+      cache: "no-cache",
     }
   );
 
