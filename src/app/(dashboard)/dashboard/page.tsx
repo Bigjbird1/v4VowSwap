@@ -22,7 +22,7 @@ const fetchUserData = async (): Promise<UserData | null> => {
     }
 
     if (!response.ok) {
-      console.error("Failed to fetch user data");
+      console.log("Failed to fetch user data");
       return null;
     }
 

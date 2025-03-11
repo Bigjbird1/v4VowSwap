@@ -5,13 +5,10 @@ import { NextResponse } from "next/server";
 import messages from "../../../../exampleData/messages";
 import { NextRequest } from "next/server";
 
-interface Params {
-  params: {
-    messageid: string;
-  };
-}
+type Params = Promise<{ messageid: string }>;
 
-export async function GET(request: NextRequest, { params }: Params) {
+export async function GET(request: NextRequest, props: { params: Params }) {
+  const params = await props.params;
   const { messageid } = params;
 
   // Find the message thread by its ID
