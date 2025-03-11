@@ -24,6 +24,42 @@ interface ListingDetails {
   photos?: { url: string }[];
 }
 
+type Params = Promise<{ messageid: string }>;
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
+
+export default async function SpecificMessageServerSide(props: {
+  params: Params;
+  searchParams: SearchParams;
+}) {
+  const params = await props.params;
+  const searchParams = await props.searchParams;
+
+  const { messageid } = params;
+
+  console.log("Resolved Params:", params); // Debugging
+
+  const { messages, listingDetails } = await fetchSpecificMessages(messageid);
+
+  if (messages.length === 0) {
+    redirect("/sign-in");
+    return null;
+  }
+
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SpecificMessageThreadClientSide
+        messages={messages}
+        listingDetails={
+          listingDetails
+            ? { ...listingDetails, photos: listingDetails.photos || [] }
+            : null
+        }
+        messageid={messageid}
+      />
+    </Suspense>
+  );
+}
+
 const fetchSpecificMessages = async (
   messageid: string
 ): Promise<{ messages: Message[]; listingDetails: ListingDetails | null }> => {
@@ -56,33 +92,3 @@ const fetchSpecificMessages = async (
     return { messages: [], listingDetails: null };
   }
 };
-
-interface Params {
-  params: {
-    messageid: string;
-  };
-}
-
-export default async function SpecificMessageServerSide({ params }: Params) {
-  const { messageid } = params;
-  const { messages, listingDetails } = await fetchSpecificMessages(messageid);
-
-  if (messages.length === 0) {
-    redirect("/sign-in");
-    return null;
-  }
-
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <SpecificMessageThreadClientSide
-        messages={messages}
-        listingDetails={
-          listingDetails
-            ? { ...listingDetails, photos: listingDetails.photos || [] }
-            : null
-        }
-        messageid={messageid}
-      />
-    </Suspense>
-  );
-}

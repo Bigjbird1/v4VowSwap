@@ -6,13 +6,10 @@ import { NextResponse } from "next/server";
 import listings from "../../../../exampleData/listings";
 import { NextRequest } from "next/server";
 
-interface Params {
-  params: {
-    listingid: string;
-  };
-}
+type Params = Promise<{ listingid: string }>;
 
-export async function GET(request: NextRequest, { params }: Params) {
+export async function GET(request: NextRequest, props: { params: Params }) {
+  const params = await props.params;
   const { listingid } = params;
 
   // Find the listing by its ID
