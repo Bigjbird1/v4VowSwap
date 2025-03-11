@@ -1,14 +1,6 @@
 import Listings from "./listings";
 
-interface ListingsPageProps {
-  params: {
-    locale: string;
-  };
-}
-
-export default async function ListingsPage({ params }: ListingsPageProps) {
-  const { locale } = params;
-
+export default async function ListingsPage({}) {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/listings`,

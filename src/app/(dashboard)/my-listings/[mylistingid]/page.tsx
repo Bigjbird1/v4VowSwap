@@ -34,16 +34,19 @@ const INITIAL_FORM_DATA: FormData = {
   hasOriginalBox: "",
 };
 
-interface MyListingInfoPageProps {
-  params: {
-    mylistingid: string;
-  };
-}
+type Params = Promise<{ mylistingid: string }>;
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
-export default function MyListingInfoPage({ params }: MyListingInfoPageProps) {
+export default async function MyListingInfoPage(props: {
+  params: Params;
+  searchParams: SearchParams;
+}) {
   const router = useRouter();
   const { user } = useUser();
   const { getToken } = useAuth();
+  const params = await props.params;
+  const searchParams = await props.searchParams;
+
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState<(File | { id: string })[]>(

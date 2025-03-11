@@ -1,10 +1,14 @@
 import About from "./aboutPage";
 
-interface AboutPageProps {
-  params: { [key: string]: string };
-}
+type Params = Promise<{ mylistingid: string }>;
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
-export default async function aboutPage({ params }: AboutPageProps) {
+export default async function aboutPage(props: {
+  params: Params;
+  searchParams: SearchParams;
+}) {
+  const params = await props.params;
+  const searchParams = await props.searchParams;
   return (
     <div>
       <About />

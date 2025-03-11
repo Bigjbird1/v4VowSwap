@@ -2,13 +2,14 @@ import "server-only";
 import SpecificListing from "./specificListing";
 import { notFound } from "next/navigation";
 
-interface Params {
-  params: {
-    listingid: string;
-  };
-}
+type Params = Promise<{ listingid: string }>;
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
-export default async function SpecificListingPage({ params }: Params) {
+export default async function SpecificListingPage(props: {
+  params: Params;
+  searchParams: SearchParams;
+}) {
+  const params = await props.params;
   const { listingid } = params;
 
   try {
