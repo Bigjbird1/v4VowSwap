@@ -99,7 +99,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-gray-900/80" />
+            <div className="fixed inset-0 " />
           </Transition.Child>
 
           <div className="fixed inset-0 flex">
@@ -129,14 +129,11 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                       onClick={() => setSidebarOpen(false)}
                     >
                       <span className="sr-only">Close sidebar</span>
-                      <XMarkIcon
-                        className="h-6 w-6 text-white"
-                        aria-hidden="true"
-                      />
+                      <XMarkIcon className="h-6 w-6 " aria-hidden="true" />
                     </button>
                   </div>
                 </Transition.Child>
-                <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4">
+                <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-base-100  px-6 pb-4">
                   <div className="flex h-16 shrink-0 items-center">
                     <Link href={"/"} className="-m-1.5 p-1.5">
                       <span className="sr-only">Marketplace</span>
@@ -144,9 +141,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                   </div>
                   <div>
                     <Link href={"/"} className="-m-1.5 p-1.5">
-                      <span className="text-sm text-gray-600 hover:text-gray-800">
-                        ← Take me back
-                      </span>
+                      <span className="text-sm ">← Take me back</span>
                     </Link>
                   </div>
                   <NavigationList navigation={updatedNavigation} />
@@ -158,14 +153,12 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       </Transition.Root>
 
       {/* Static sidebar for desktop */}
-      <div className="hidden flex-shrink-0 lg:flex custom-sidebar-width border-r border-gray-200 bg-white mt-10">
+      <div className="hidden flex-shrink-0 lg:flex custom-sidebar-width border-r border-gray-200  mt-10">
         <div className="flex flex-col gap-y-5 overflow-y-auto px-6 pb-4 h-full custom-sidebar-width ">
           MARKETPLACE
           <div>
             <Link href={"/"} className="-m-1.5 p-1.5">
-              <span className="text-xs text-gray-600 hover:text-gray-800">
-                ← Take me back
-              </span>
+              <span className="text-xs ">← Take me back</span>
             </Link>
           </div>
           <div className="mt-4">

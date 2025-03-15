@@ -8,7 +8,7 @@ interface HeroClientProps {
 
 export default function HeroClient({ heroVideo }: HeroClientProps) {
   return (
-    <div className="bg-white relative">
+    <div className="bg-base-100 relative">
       <main>
         <div className="relative isolate">
           <video

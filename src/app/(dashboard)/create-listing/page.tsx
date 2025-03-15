@@ -265,7 +265,7 @@ export default function CreateListing(): JSX.Element {
         <div className="px-4 sm:px-0">
           <button
             onClick={() => router.back()}
-            className="mt-2 flex items-center justify-center p-2 text-white bg-black rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            className="mt-2 flex items-center justify-center p-2  rounded-full  focus:outline-none  focus:ring-inset "
             aria-label="Go back"
           >
             <svg
@@ -283,10 +283,10 @@ export default function CreateListing(): JSX.Element {
               />
             </svg>
           </button>
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 mt-6">
+          <h1 className="text-4xl font-bold tracking-tight  mt-6">
             Create a new listing
           </h1>
-          <p className="mt-1 text-sm leading-6 text-gray-600">
+          <p className="mt-1 text-sm leading-6 ">
             Fill in the following information to create a new listing.
           </p>
         </div>
@@ -300,14 +300,14 @@ export default function CreateListing(): JSX.Element {
         </div>
         <form
           onSubmit={handleSubmit}
-          className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2"
+          className="bg-base-100 shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2"
         >
           <div className="px-4 py-6 sm:p-8 ">
             <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 ">
               <div className="col-span-full">
                 <label
                   htmlFor="title"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6 "
                 >
                   Title
                   <span className="text-red-500" title="required">
@@ -320,7 +320,7 @@ export default function CreateListing(): JSX.Element {
                     name="title"
                     id="title"
                     autoComplete="title"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 pl-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                     placeholder="A title"
                     value={formData.title}
                     onChange={handleInputChange}
@@ -330,7 +330,7 @@ export default function CreateListing(): JSX.Element {
               <div className="col-span-full">
                 <label
                   htmlFor="about"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6 "
                 >
                   Description
                   <span className="text-red-500" title="required">
@@ -342,7 +342,7 @@ export default function CreateListing(): JSX.Element {
                     id="description"
                     name="description"
                     rows={3}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md pl-3 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                     placeholder="A description"
                     value={formData.description}
                     onChange={handleInputChange}
@@ -352,7 +352,7 @@ export default function CreateListing(): JSX.Element {
               <div className="col-span-full">
                 <label
                   htmlFor="price"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6 "
                 >
                   Price
                   <span className="text-red-500" title="required">
@@ -385,7 +385,7 @@ export default function CreateListing(): JSX.Element {
               <div className="col-span-full">
                 <label
                   htmlFor="condition"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6 "
                 >
                   Condition
                   <span className="text-red-500" title="required">
@@ -397,7 +397,7 @@ export default function CreateListing(): JSX.Element {
                     id="condition"
                     name="condition"
                     autoComplete="condition"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
+                    className="block pl-3 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                     value={condition}
                     onChange={(e) => setCondition(e.target.value)}
                     required
@@ -410,7 +410,7 @@ export default function CreateListing(): JSX.Element {
               <div className="col-span-full">
                 <label
                   htmlFor="cover-photo"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6 "
                 >
                   Upload photos
                   <span className="text-red-500" title="required">
@@ -558,7 +558,7 @@ export default function CreateListing(): JSX.Element {
                         Comes with a label
                         <div className="ml-1 text-gray-400 cursor-help relative group inline-block">
                           <QuestionMarkCircleIcon className="h-3 w-3" />
-                          <span className="absolute left-0 bottom-full mb-2 w-48 px-2 py-1 text-xs text-white bg-black rounded invisible group-hover:visible">
+                          <span className="absolute left-0 bottom-full mb-2 w-48 px-2 py-1 text-xs text-base-100 rounded invisible group-hover:visible">
                             With label on increases the value.
                           </span>
                         </div>
@@ -591,7 +591,7 @@ export default function CreateListing(): JSX.Element {
                         Comes in original box?
                         <div className="ml-1 text-gray-400 cursor-help relative group inline-block">
                           <QuestionMarkCircleIcon className="h-3 w-3" />
-                          <span className="absolute left-0 bottom-full mb-2 w-48 px-2 py-1 text-xs text-white bg-black rounded invisible group-hover:visible">
+                          <span className="absolute left-0 bottom-full mb-2 w-48 px-2 py-1 text-xs text-base-100 bg-black rounded invisible group-hover:visible">
                             It will increase the value if it comes in the
                             original box.
                           </span>
@@ -629,7 +629,7 @@ export default function CreateListing(): JSX.Element {
             </button>
             <button
               type="submit"
-              className={`relative inline-flex justify-center items-center rounded-md bg-gray-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600 ${
+              className={`relative inline-flex justify-center items-center rounded-md bg-gray-600 px-3 py-2 text-sm font-semibold  shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600 ${
                 isLoading ? "cursor-not-allowed" : ""
               }`}
               disabled={isLoading}
