@@ -218,7 +218,7 @@ export default function UserInfoClientSideComponent({
           <div className="px-4 sm:px-0">
             <button
               onClick={() => router.back()}
-              className="mt-2 flex items-center justify-center p-2 text-white bg-black rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="mt-2 flex items-center justify-center p-2 rounded-full  focus:outline-none focus:ring-2 focus:ring-inset focus:ring-base-100"
               aria-label="Go back"
             >
               <svg
@@ -236,24 +236,22 @@ export default function UserInfoClientSideComponent({
                 />
               </svg>
             </button>
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 mt-6">
-              Profile
-            </h1>
-            <p className="mt-1 text-sm leading-6 text-gray-600">
+            <h1 className="text-4xl font-bold tracking-tight  mt-6">Profile</h1>
+            <p className="mt-1 text-sm leading-6 ">
               Help buyers get to know you better! Update your profile with a
               brief bio and a photo. A complete profile builds trust and
               confidence in your interactions.
             </p>
           </div>
 
-          <form className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
+          <form className="bg-base-100 shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
             <div className="px-4 py-6 sm:p-8">
               <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div className="col-span-full">
                   <div className="flex items-center justify-left">
                     <label
                       htmlFor="email-reminders"
-                      className="text-sm font-medium leading-6 text-gray-900 pr-3"
+                      className="text-sm font-medium leading-6  pr-3"
                     >
                       Recieve emails about new listings
                     </label>
@@ -263,14 +261,14 @@ export default function UserInfoClientSideComponent({
                       type="checkbox"
                       checked={formData.emailReminders}
                       onChange={handleCheckboxChange}
-                      className="h-4 w-4 text-gray-600 focus:ring-gray-500 border-gray-300 rounded"
+                      className="h-4 w-4  focus:ring-gray-500 border-gray-300 rounded"
                     />
                   </div>
                 </div>
                 <div className="col-span-full">
                   <label
                     htmlFor="about"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="block text-sm font-medium leading-6 "
                   >
                     About
                   </label>
@@ -287,17 +285,17 @@ export default function UserInfoClientSideComponent({
                       placeholder="Write some lines about yourself."
                     />
                   </div>
-                  <p className="mt-3 text-sm leading-6 text-gray-600">
+                  <p className="mt-3 text-sm leading-6 ">
                     Write a few lines about yourself.
                   </p>
                 </div>
                 <div className="sm:col-span-4">
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="block text-sm font-medium leading-6 "
                   >
                     Email address
-                    <span className="ml-2 inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-700">
+                    <span className="ml-2 inline-flex items-center rounded-full  px-2.5 py-0.5 text-xs font-medium ">
                       Cannot be changed here
                     </span>
                   </label>
@@ -309,7 +307,7 @@ export default function UserInfoClientSideComponent({
                       value={formData.email}
                       readOnly
                       autoComplete="email"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6 bg-gray-100"
+                      className="block w-full rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6 "
                     />
                   </div>
                 </div>
@@ -317,7 +315,7 @@ export default function UserInfoClientSideComponent({
                 <div className="col-span-full">
                   <label
                     htmlFor="photo"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="block text-sm font-medium leading-6 "
                   >
                     Photo
                   </label>
@@ -355,7 +353,7 @@ export default function UserInfoClientSideComponent({
                     <button
                       type="button"
                       onClick={handleImageUploadClick}
-                      className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                      className="rounded-md bg-base-100 px-2.5 py-1.5 text-sm font-semibold  shadow-sm ring-1 ring-inset ring-gray-300 "
                     >
                       Change
                     </button>
@@ -364,7 +362,7 @@ export default function UserInfoClientSideComponent({
                 <div className="col-span-full">
                   <label
                     htmlFor="address"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="block text-sm font-medium leading-6 "
                   >
                     Address
                   </label>
@@ -463,7 +461,7 @@ export default function UserInfoClientSideComponent({
                 type="button"
                 onClick={handleSave}
                 disabled={loading}
-                className={`rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 ${
+                className={`rounded-md bg-base-100 px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 ${
                   loading ? "opacity-50 cursor-not-allowed" : ""
                 }`}
               >

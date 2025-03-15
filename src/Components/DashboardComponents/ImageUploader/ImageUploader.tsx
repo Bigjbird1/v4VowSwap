@@ -60,7 +60,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
         <div className="mt-4 flex text-sm leading-6 text-gray-600">
           <label
             htmlFor="file-upload"
-            className="relative cursor-pointer rounded-md bg-white font-semibold text-gray-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-gray-600 focus-within:ring-offset-2 hover:text-gray-500"
+            className="relative cursor-pointer rounded-md bg-base-100 font-semibold text-gray-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-gray-600 focus-within:ring-offset-2 hover:text-gray-500"
           >
             <span>Upload pictures </span>
             <input

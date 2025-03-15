@@ -14,8 +14,8 @@ interface DashboardPageProps {
 }
 
 export default function DashboardPageClientSide({
-  firstName = "Guest", // Default value in case firstName is undefined
-  isStripeConnected = false, // Default value in case isStripeConnected is undefined
+  firstName = "Guest",
+  isStripeConnected = false,
 }: DashboardPageProps) {
   const searchParams = useSearchParams();
   const emailVerified = searchParams.get("emailVerified");

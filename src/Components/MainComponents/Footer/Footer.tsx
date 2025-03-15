@@ -101,7 +101,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-white" aria-labelledby="footer-heading">
+    <footer className="bg-base-100" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -110,11 +110,7 @@ export default function Footer() {
           <div className="space-y-8">
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-400 hover:text-gray-500"
-                >
+                <a key={item.name} href={item.href} className="">
                   <span className="sr-only">{item.name}</span>
                   {item.icon && (
                     <item.icon className="h-6 w-6" aria-hidden="true" />
@@ -122,7 +118,7 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            <p className="text-xs leading-6 text-gray-600">
+            <p className="text-xs leading-6 ">
               example@example.com <br></br> +00 123 456 789
             </p>
           </div>
@@ -133,7 +129,7 @@ export default function Footer() {
                   {column.map((item) => (
                     <li key={item.name}>
                       <Link href={item.href}>
-                        <span className="text-sm leading-6 text-gray-600 hover:text-gray-900">
+                        <span className="text-sm leading-6  hover:text-gray-900">
                           {item.name}
                         </span>
                       </Link>

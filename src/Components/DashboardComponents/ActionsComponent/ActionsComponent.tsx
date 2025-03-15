@@ -70,7 +70,7 @@ export default function ActionsComponent() {
             actionIdx === actions.length - 1
               ? "rounded-bl-lg rounded-br-lg sm:rounded-bl-none"
               : "",
-            "group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500"
+            "group relative bg-base-100 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-500"
           )}
         >
           <div>
@@ -78,20 +78,20 @@ export default function ActionsComponent() {
               className={classNames(
                 action.iconBackground,
                 action.iconForeground,
-                "inline-flex rounded-lg p-3 ring-4 ring-white"
+                "inline-flex rounded-lg p-3 ring-4 ring-base-100"
               )}
             >
               <action.icon className="h-6 w-6" aria-hidden="true" />
             </span>
           </div>
           <div className="mt-8">
-            <h3 className="text-base font-semibold leading-6 text-gray-900">
+            <h3 className="text-base font-semibold leading-6 ">
               <Link href={action.href}>
                 <span className="absolute inset-0" aria-hidden="true" />
                 {action.title}
               </Link>
             </h3>
-            <p className="mt-2 text-sm text-gray-500">{action.description}</p>
+            <p className="mt-2 text-sm ">{action.description}</p>
           </div>
           <span
             className="pointer-events-none absolute bottom-6 right-6 text-gray-300 group-hover:text-gray-400 transition-transform transform group-hover:rotate-45"
