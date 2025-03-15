@@ -187,11 +187,11 @@ export default function SpecificMessageThreadClientSide({
   }
 
   return (
-    <div className="bg-white sm:rounded-xl">
+    <div className="bg-base-100 sm:rounded-xl">
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <button
           onClick={() => router.back()}
-          className="mt-2 flex items-center justify-center p-2 text-white bg-black rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+          className="mt-2 flex items-center justify-center p-2   rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-base-100"
           aria-label="Go back"
         >
           <svg
@@ -232,9 +232,7 @@ export default function SpecificMessageThreadClientSide({
         )}
 
         <div className="border-b border-gray-200 pb-10 mt-6">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-            Message thread
-          </h1>
+          <h1 className="text-4xl font-bold tracking-tight ">Message thread</h1>
         </div>
 
         <ul role="list" className="space-y-6">
@@ -322,7 +320,7 @@ export default function SpecificMessageThreadClientSide({
               </button>
               <button
                 type="submit"
-                className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                className="rounded-md bg-base-100 px-2.5 py-1.5 text-sm font-semibold  shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                 disabled={isSending}
               >
                 {isSending ? "Sending..." : "Send message"}

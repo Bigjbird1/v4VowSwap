@@ -112,7 +112,7 @@ export default function FetchMessagesClientSideComponent({
   };
 
   return (
-    <div className="bg-white sm:rounded-xl">
+    <div className="bg-base-100 sm:rounded-xl">
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-32">
         <DeleteConfirmationModal
           open={open}
@@ -122,7 +122,7 @@ export default function FetchMessagesClientSideComponent({
 
         <button
           onClick={() => router.back()}
-          className="mt-2 flex items-center justify-center p-2 text-white bg-black rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+          className="mt-2 flex items-center justify-center p-2  rounded-full  focus:outline-none focus:ring-2 focus:ring-inset focus:ring-base-100"
           aria-label="Go back"
         >
           <svg
@@ -141,7 +141,7 @@ export default function FetchMessagesClientSideComponent({
           </svg>
         </button>
         <div className="border-b border-gray-200 pb-4 sm:pb-10 mt-6">
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight ">
             Messages
           </h1>
           <p className="mt-2 sm:mt-4 text-base text-gray-500 mb-2">
@@ -171,7 +171,7 @@ export default function FetchMessagesClientSideComponent({
             {messages.map((message) => (
               <li
                 key={message.messageThreadId}
-                className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 py-4 sm:py-5 rounded-lg bg-white"
+                className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 py-4 sm:py-5 rounded-lg bg-base-100"
               >
                 <div className="flex flex-col flex-1">
                   <div className="flex items-center flex-start">
@@ -184,7 +184,7 @@ export default function FetchMessagesClientSideComponent({
                     </p>
                   </div>
                   <div className="flex items-center flex-start">
-                    <p className="text-sm font-semibold leading-6 text-gray-900">
+                    <p className="text-sm font-semibold leading-6 ">
                       {truncateMessage(message.message)}
                     </p>
                     <p
@@ -211,19 +211,19 @@ export default function FetchMessagesClientSideComponent({
                   {message.status !== "pending_review" ? (
                     <Link
                       href={`/messages/${message.messageThreadId}`}
-                      className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:inline-block"
+                      className="rounded-md  px-2.5 py-1.5 text-sm font-semibold  shadow-sm ring-1 ring-inset   sm:inline-block"
                     >
                       View message
                       <span className="sr-only">, {message.message}</span>
                     </Link>
                   ) : (
-                    <div className="rounded-md bg-gray-100 px-2.5 py-1.5 text-sm font-semibold text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 sm:inline-block">
+                    <div className="rounded-md  px-2.5 py-1.5 text-sm font-semibold  shadow-sm ring-1 ring-inset  sm:inline-block">
                       Pending approval
                     </div>
                   )}
                   <button
                     onClick={() => requestDelete(message.messageThreadId)}
-                    className="rounded-full p-2 hover:bg-gray-200 text-gray-400 hover:text-gray-600"
+                    className="rounded-full p-2 hover:bg-gray-200  hover:text-gray-600"
                     aria-label="Delete conversation"
                   >
                     <TrashIcon className="h-5 w-5" />

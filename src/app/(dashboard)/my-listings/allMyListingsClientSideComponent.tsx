@@ -59,11 +59,11 @@ export default function AllMyListingsClientSideComponent({
 
   return (
     <>
-      <div className="bg-white sm:rounded-xl">
+      <div className="bg-base-100 sm:rounded-xl">
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-32">
           <button
             onClick={() => router.back()}
-            className="mt-2 flex items-center justify-center p-2 text-white bg-black rounded-full hover:bg-gray-700"
+            className="mt-2 flex items-center justify-center p-2   rounded-full "
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -81,10 +81,8 @@ export default function AllMyListingsClientSideComponent({
             </svg>
           </button>
           <div className="border-b border-gray-200 pb-10 mt-6">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-              My listings
-            </h1>
-            <p className="mt-4 text-base text-gray-500">
+            <h1 className="text-4xl font-bold tracking-tight ">My listings</h1>
+            <p className="mt-4 text-base ">
               Here are all your listings. Click on a listing to edit or delete.
             </p>
           </div>
@@ -109,7 +107,7 @@ export default function AllMyListingsClientSideComponent({
                 {listings.map((product) => (
                   <div
                     key={product.id}
-                    className="group relative flex sm:flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"
+                    className="group relative flex sm:flex-col overflow-hidden rounded-lg border border-gray-200 bg-base-100"
                   >
                     <div className="flex-1 p-4 flex flex-col justify-between sm:order-2">
                       <Link href={`/my-listings/${product.id}`}>
@@ -137,7 +135,7 @@ export default function AllMyListingsClientSideComponent({
                             product.status === "sold"
                               ? "bg-gray-500 hover:bg-gray-600"
                               : "bg-blue-500 hover:bg-blue-600"
-                          } text-white`}
+                          } text-base-100`}
                         >
                           {product.status === "sold"
                             ? "Mark as available"
@@ -161,7 +159,7 @@ export default function AllMyListingsClientSideComponent({
                         </div>
                       </Link>
                       {product.status === "sold" && (
-                        <div className="absolute top-0 right-0 bg-red-500 text-white text-sm font-bold py-1 px-3 m-2 rounded">
+                        <div className="absolute top-0 right-0 bg-red-500 text-base-100 text-sm font-bold py-1 px-3 m-2 rounded">
                           Sold
                         </div>
                       )}

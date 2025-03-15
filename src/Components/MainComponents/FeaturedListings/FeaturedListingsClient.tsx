@@ -19,10 +19,10 @@ export default function FeaturedListingsClient({
   data,
 }: FeaturedListingsClientProps) {
   return (
-    <div className="bg-white py-12">
+    <div className="bg-base-100 py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row justify-left items-left sm:items-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4 sm:mb-0 sm:mr-6">
+          <h2 className="text-2xl font-bold  mb-4 sm:mb-0 sm:mr-6">
             Featured Listings
           </h2>
         </div>
@@ -30,7 +30,7 @@ export default function FeaturedListingsClient({
           {data.map((product) => (
             <div
               key={product.id}
-              className="group relative flex flex-row-reverse sm:flex-col overflow-hidden rounded-lg border border-gray-200 bg-white h-32 sm:h-[334px]"
+              className="group relative flex flex-row-reverse sm:flex-col overflow-hidden rounded-lg border border-gray-200 bg-base-100 h-32 sm:h-[334px]"
             >
               <div className="relative shrink-0 sm:w-full">
                 <Link href={`/listings/${product.id}`}>
@@ -55,10 +55,10 @@ export default function FeaturedListingsClient({
               <div className="flex-1 p-4 flex flex-col justify-between sm:order-2">
                 <Link href={`/listings/${product.id}`}>
                   <div>
-                    <h3 className="text-sm font-medium text-gray-900 line-clamp-1">
+                    <h3 className="text-sm font-medium  line-clamp-1">
                       {product.title}
                     </h3>
-                    <p className="text-sm text-gray-500 mt-2 line-clamp-2">
+                    <p className="text-sm  mt-2 line-clamp-2">
                       {product.description}
                     </p>
                   </div>

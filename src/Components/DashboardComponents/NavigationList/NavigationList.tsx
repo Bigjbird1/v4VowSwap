@@ -37,17 +37,13 @@ function NavigationList({ navigation }: NavigationListProps) {
                 <Link href={item.href}>
                   <span
                     className={classNames(
-                      item.current
-                        ? "bg-gray-50 text-gray-600"
-                        : "text-gray-700 hover:text-gray-600 hover:bg-gray-50",
+                      item.current ? "" : "",
                       "group flex items-center gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold cursor-pointer"
                     )}
                   >
                     <item.icon
                       className={classNames(
-                        item.current
-                          ? "text-gray-600"
-                          : "text-gray-400 group-hover:text-gray-600",
+                        item.current ? "" : "",
                         "h-6 w-6 shrink-0"
                       )}
                       aria-hidden="true"

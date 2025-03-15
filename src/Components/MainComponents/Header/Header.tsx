@@ -49,7 +49,7 @@ export default function Header({}: HeaderProps) {
         className={({ open }) =>
           classNames(
             open ? "fixed inset-0 z-40 overflow-y-auto" : "",
-            "bg-white shadow-sm lg:static lg:overflow-y-visible"
+            "bg-base-100 shadow-sm lg:static lg:overflow-y-visible"
           )
         }
       >
