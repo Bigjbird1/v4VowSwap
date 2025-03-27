@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 
 interface PaginationProps {
@@ -6,11 +8,11 @@ interface PaginationProps {
   handlePageChange: (page: number) => void;
 }
 
-const Pagination: React.FC<PaginationProps> = ({
+export default function Pagination({
   totalPages,
   currentPage,
   handlePageChange,
-}) => {
+}: PaginationProps) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -116,6 +118,4 @@ const Pagination: React.FC<PaginationProps> = ({
       </ul>
     </nav>
   );
-};
-
-export default Pagination;
+}

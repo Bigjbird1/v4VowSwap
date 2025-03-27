@@ -1,11 +1,203 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body {
-  font-family: "Comic Sans MS", cursive, sans-serif;
+@layer base {
+  :root {
+    /* Main palette - soft wedding-inspired colors */
+    --color-blush: 351 100% 96%;
+    --color-sage: 120 16% 85%;
+    --color-champagne: 35 33% 90%;
+    --color-ivory: 60 33% 96%;
+    --color-navy: 220 45% 25%;
+    --color-gold: 45 80% 80%;
+
+    /* Semantic colors mapped to our wedding palette */
+    --background: var(--color-ivory);
+    --foreground: 220 45% 25%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 45% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 45% 25%;
+
+    --primary: 351 80% 85%;
+    --primary-foreground: 220 45% 25%;
+
+    --secondary: 120 16% 85%;
+    --secondary-foreground: 220 45% 25%;
+
+    --muted: 35 33% 90%;
+    --muted-foreground: 220 35% 35%;
+
+    --accent: 45 80% 80%;
+    --accent-foreground: 220 45% 25%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 20% 85%;
+    --input: 220 20% 85%;
+    --ring: 351 80% 85%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 220 45% 15%;
+    --foreground: 60 33% 96%;
+
+    --card: 220 45% 20%;
+    --card-foreground: 60 33% 96%;
+
+    --popover: 220 45% 20%;
+    --popover-foreground: 60 33% 96%;
+
+    --primary: 351 80% 85%;
+    --primary-foreground: 220 45% 25%;
+
+    --secondary: 120 16% 25%;
+    --secondary-foreground: 60 33% 96%;
+
+    --muted: 220 45% 25%;
+    --muted-foreground: 220 20% 70%;
+
+    --accent: 45 80% 50%;
+    --accent-foreground: 220 45% 25%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 20% 30%;
+    --input: 220 20% 30%;
+    --ring: 351 80% 60%;
+  }
 }
 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif tracking-tight;
+  }
+  h1 {
+    @apply text-4xl md:text-6xl font-light;
+  }
+  h2 {
+    @apply text-2xl md:text-3xl font-light;
+  }
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+.hero {
+  background-image: url("/placeholder.svg?height=1080&width=1920");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+  z-index: 1;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='rgba(255,255,255,0.05)' fill-rule='evenodd'/%3E%3C/svg%3E");
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Elegant scrollbar styling */
+.scrollbar-hide::-webkit-scrollbar {
+  height: 4px;
+  background-color: transparent;
+}
+
+.scrollbar-hide::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--primary) / 0.5);
+  border-radius: 4px;
+}
+
+.scrollbar-hide:hover::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--primary) / 0.8);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-fade-in-delay-1 {
+  animation: fadeIn 0.6s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-delay-2 {
+  animation: fadeIn 0.6s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+/* Decorative elements */
+.decorative-divider {
+  position: relative;
+  height: 1px;
+  background-color: hsl(var(--border));
+  margin: 2rem 0;
+}
+
+.decorative-divider::before {
+  content: "♦";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: hsl(var(--background));
+  padding: 0 1rem;
+  color: hsl(var(--primary));
+  font-size: 0.875rem;
+}
+
+/* Preserve existing styles */
 @keyframes spin {
   0% {
     transform: rotate(0deg);

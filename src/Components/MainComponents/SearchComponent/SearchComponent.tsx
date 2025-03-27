@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, Fragment } from "react";
 import { Combobox, Dialog, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";

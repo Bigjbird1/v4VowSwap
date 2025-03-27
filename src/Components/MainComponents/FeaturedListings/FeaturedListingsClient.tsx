@@ -1,14 +1,28 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
-import { EnvelopeIcon } from "@heroicons/react/24/solid";
-import Image from "next/image";
+import { ArrowRight, Filter, ChevronDown, Heart, Sparkles, Tag } from "lucide-react";
+import { Button } from "@/Components/ui/button";
+import { Badge } from "@/Components/ui/badge";
+import ProductCard from "@/Components/MainComponents/ProductCard/ProductCard";
 
 interface Listing {
   id: string;
   title: string;
   description: string;
   price: number;
+  originalPrice?: number;
   photos: { url: string }[];
+  category?: string;
+  condition?: string;
+  weddingStyle?: string;
+  season?: string;
+  seller?: {
+    name: string;
+    rating?: number;
+  };
+  story?: string;
 }
 
 interface FeaturedListingsClientProps {
@@ -18,67 +32,82 @@ interface FeaturedListingsClientProps {
 export default function FeaturedListingsClient({
   data,
 }: FeaturedListingsClientProps) {
+  const [activeCategory, setActiveCategory] = useState("Dresses");
+  
+  // Wedding-specific categories
+  const categories = ["Dresses", "Decor", "Accessories", "Flowers", "Shoes", "Stationery", "Gifts"];
+  
+
   return (
-    <div className="bg-base-100 py-12">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row justify-left items-left sm:items-center">
-          <h2 className="text-2xl font-bold  mb-4 sm:mb-0 sm:mr-6">
-            Featured Listings
-          </h2>
-        </div>
-        <div className="mt-6 grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4">
-          {data.map((product) => (
-            <div
-              key={product.id}
-              className="group relative flex flex-row-reverse sm:flex-col overflow-hidden rounded-lg border border-gray-200 bg-base-100 h-32 sm:h-[334px]"
+    <section className="py-16 px-6 md:px-10 bg-ivory">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-serif mb-2 text-navy">Wedding Treasures</h2>
+            <p className="text-neutral-600">Pre-loved wedding items with exceptional quality and significant savings</p>
+          </div>
+          <div className="flex items-center gap-4 mt-4 md:mt-0">
+            <Button
+              variant="outline"
+              size="sm"
+              className="gap-2 text-sm border-primary/20 hover:bg-primary/5 hover:text-primary transition-all"
             >
-              <div className="relative shrink-0 sm:w-full">
-                <Link href={`/listings/${product.id}`}>
-                  <Image
-                    src={product.photos[0]?.url || ""}
-                    alt={product.title}
-                    width={500}
-                    height={500}
-                    className="w-32 h-full object-cover sm:w-full sm:h-52"
-                  />
-                </Link>
-
-                <button className="absolute bottom-2 right-2 transition-transform duration-100 transform hover:scale-150">
-                  <EnvelopeIcon
-                    className="h-6 w-6 text-gray-300 hover:text-gray-500"
-                    aria-hidden="true"
-                  />
-                </button>
-              </div>
-
-              {/* Content Section */}
-              <div className="flex-1 p-4 flex flex-col justify-between sm:order-2">
-                <Link href={`/listings/${product.id}`}>
-                  <div>
-                    <h3 className="text-sm font-medium  line-clamp-1">
-                      {product.title}
-                    </h3>
-                    <p className="text-sm  mt-2 line-clamp-2">
-                      {product.description}
-                    </p>
-                  </div>
-                </Link>
-
-                <div className="text-base font-medium text-gray-900">
-                  {product.price} €
-                </div>
-              </div>
+              <Filter className="h-4 w-4" />
+              Filter
+            </Button>
+            <div className="flex items-center gap-2 text-sm">
+              <span className="text-neutral-600">Sort by:</span>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="font-medium flex items-center gap-1 hover:text-primary transition-colors"
+              >
+                Recommended
+                <ChevronDown className="h-4 w-4" />
+              </Button>
             </div>
+          </div>
+        </div>
+
+        {/* Wedding Categories */}
+        <div className="flex gap-4 overflow-x-auto pb-4 mb-6 scrollbar-hide">
+          {categories.map((category, index) => (
+            <Badge
+              key={index}
+              variant={category === activeCategory ? "default" : "outline"}
+              className={`rounded-full px-4 py-2 whitespace-nowrap transition-all duration-300 cursor-pointer ${
+                category === activeCategory
+                  ? "bg-primary text-navy hover:bg-primary/90"
+                  : "hover:bg-primary/10 hover:text-primary hover:border-primary/30"
+              }`}
+              onClick={() => setActiveCategory(category)}
+            >
+              {category}
+            </Badge>
           ))}
         </div>
-        <div className="mt-6">
-          <Link href="/listings">
-            <span className="text-green-600 hover:text-green-500 text-xl font-bold">
-              See all listings
-            </span>
-          </Link>
+        
+
+        {/* Featured Wedding Items */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {data.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+
+
+        <div className="text-center mt-8">
+          <Button
+            variant="outline"
+            className="px-8 py-6 rounded-full text-sm border-primary/20 hover:bg-primary/5 hover:text-primary hover:border-primary/40 transition-all"
+          >
+            <Link href="/listings" className="flex items-center">
+              View All Wedding Items
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

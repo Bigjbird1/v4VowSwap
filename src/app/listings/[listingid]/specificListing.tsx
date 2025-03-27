@@ -21,12 +21,17 @@ interface ListingData {
   title: string;
   description: string;
   price: number;
+  originalPrice?: number;
   photos: { url: string }[];
-  seller: {
-    imageUrl: string;
+  seller: string | {
     name: string;
-    location: string;
+    rating?: number;
+    imageUrl?: string;
+    location?: string;
   };
+  category?: string;
+  condition?: string;
+  story?: string;
 }
 
 interface SpecificListingProps {
@@ -34,10 +39,28 @@ interface SpecificListingProps {
 }
 
 export default function SpecificListing({ listingData }: SpecificListingProps) {
-  const { title, description, price, photos, seller } = listingData;
+  const { title, description, price, originalPrice, photos, seller, category, condition, story } = listingData;
   const [selectedImage, setSelectedImage] = useState(photos[0].url);
   const router = useRouter();
   const lightboxRef = useRef<PhotoSwipeLightbox | null>(null);
+
+  // Helper function to get seller name
+  const getSellerName = () => {
+    if (typeof seller === 'string') return 'Seller';
+    return seller.name || 'Seller';
+  };
+
+  // Helper function to get seller image
+  const getSellerImage = () => {
+    if (typeof seller === 'string') return '/images/profiles/profile1.jpg';
+    return seller.imageUrl || '/images/profiles/profile1.jpg';
+  };
+
+  // Helper function to get seller rating
+  const getSellerRating = () => {
+    if (typeof seller === 'string') return 5;
+    return seller.rating || 5;
+  };
 
   useEffect(() => {
     const lightbox = new PhotoSwipeLightbox({
@@ -160,7 +183,7 @@ export default function SpecificListing({ listingData }: SpecificListingProps) {
                 </div>
                 <div className="mt-10 flex items-center">
                   <Image
-                    src={seller.imageUrl || "/images/profiles/profile1.jpg"}
+                    src={getSellerImage()}
                     alt="Seller"
                     width={40}
                     height={40}
@@ -168,13 +191,13 @@ export default function SpecificListing({ listingData }: SpecificListingProps) {
                   />
                   <div>
                     <p className="text-sm font-medium text-gray-700">
-                      {seller.name || "Peter"}
+                      {getSellerName()}
                     </p>
                     <div className="flex items-center">
                       {[...Array(5)].map((_, i) => (
                         <svg
                           key={i}
-                          className="h-5 w-5 text-yellow-400"
+                          className={`h-5 w-5 ${i < getSellerRating() ? "text-yellow-400" : "text-gray-300"}`}
                           fill="currentColor"
                           viewBox="0 0 24 24"
                           style={{ marginRight: i < 4 ? "4px" : "0" }}
@@ -228,11 +251,28 @@ export default function SpecificListing({ listingData }: SpecificListingProps) {
                               className="list-disc pl-5 text-gray-500"
                             >
                               <li className="text-gray-500 text-sm p-1">
-                                Seller: {seller.name}
+                                Seller: {getSellerName()}
                               </li>
-                              <li className="text-gray-500 text-sm p-1">
-                                Location: {seller.location}
-                              </li>
+                              {condition && (
+                                <li className="text-gray-500 text-sm p-1">
+                                  Condition: {condition}
+                                </li>
+                              )}
+                              {category && (
+                                <li className="text-gray-500 text-sm p-1">
+                                  Category: {category}
+                                </li>
+                              )}
+                              {originalPrice && (
+                                <li className="text-gray-500 text-sm p-1">
+                                  Original Price: ${originalPrice}
+                                </li>
+                              )}
+                              {story && (
+                                <li className="text-gray-500 text-sm p-1">
+                                  Story: "{story}"
+                                </li>
+                              )}
                             </ul>
                           </Disclosure.Panel>
                         </>
